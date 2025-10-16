@@ -16,20 +16,18 @@ class Crociera:
     def carica_file_dati(self, file_path):
         """Carica i dati (cabine e passeggeri) dal file"""
         # TODO
-        try:
-            with open(file_path, newline='') as file:
-                lettore = csv.reader(file)
-                for riga in lettore:
-                    if len(riga) == 3:
-                        self.passeggeri.append(Passeggero(riga[0], riga[1], riga[2]))
-                    elif len(riga) == 4:
-                        self.camere.append(Camera(riga[0], riga[1], riga[2], riga[3]))
-                    elif len(riga) == 5 and riga[4].isdigit():
-                        self.camere.append(Camera_animali(riga[0], riga[1], riga[2], riga[3], riga[4]))
-                    else:
-                        self.camere.append(Camera_deluxe(riga[0], riga[1], riga[2], riga[3], riga[4]))
-        except FileNotFoundError:
-            raise Exception("\nFile not found")
+        with open(file_path, newline='') as file:
+            lettore = csv.reader(file)
+            for riga in lettore:
+                #print(len(riga))
+                if len(riga) == 3:
+                    self.passeggeri.append(Passeggero(riga[0], riga[1], riga[2]))
+                elif len(riga) == 4:
+                    self.camere.append(Camera(riga[0], riga[1], riga[2], riga[3]))
+                elif len(riga) == 5 and riga[4].isdigit():
+                    self.camere.append(Camera_animali(riga[0], riga[1], riga[2], riga[3], riga[4]))
+                else:
+                    self.camere.append(Camera_deluxe(riga[0], riga[1], riga[2], riga[3], riga[4]))
 
 
 
@@ -42,7 +40,7 @@ class Crociera:
                     if p.codice == codice_passeggero and p.camera == "":
                         c.modifica_passeggero(codice_passeggero)
                         p.modifica_camera(codice_cabina)
-                        break
+                        return None
         raise Exception("Cabina o passeggero non validi")
 
 
@@ -57,4 +55,7 @@ class Crociera:
     def elenca_passeggeri(self):
         """Stampa l'elenco dei passeggeri mostrando, per ognuno, la cabina a cui è associato, quando applicabile """
         # TODO
+        for p in self.passeggeri:
+            print(p)
+
 

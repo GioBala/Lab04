@@ -9,4 +9,8 @@ class Passeggero:
         self.camera = camera
 
     def __str__(self):
-        return f'Codice camera: {self.codice}, Nome: {self.nome}, Cognome: {self.cognome}'
+        if self.camera == "":
+            c="Nessuna"
+        else:
+            c=self.camera
+        return f'Codice passeggero: {self.codice}, Nome: {self.nome}, Cognome: {self.cognome}, Camera: {c}'

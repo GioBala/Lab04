@@ -27,18 +27,18 @@ def main():
             file_path = "dati_crociera.csv"
             try:
                 crociera.carica_file_dati(file_path)
-                print("Dati caricati correttamente.")
+                print("\nDati caricati correttamente.")
             except FileNotFoundError:
-                print("File non trovato.")
+                print("\nFile non trovato.")
 
         elif scelta == "3":
             codice_cabina = input("Codice cabina: ")
             codice_passeggero = input("Codice passeggero: ")
             try:
                 crociera.assegna_passeggero_a_cabina(codice_cabina, codice_passeggero)
-                print("Cabina assegnata con successo.")
+                print("\nCabina assegnata con successo.")
             except Exception as e:
-                print(f"Errore: {e}")
+                print(f"\nErrore: {e}")
 
         elif scelta == "4":
             cabine_ordinate = crociera.cabine_ordinate_per_prezzo()
@@ -51,11 +51,11 @@ def main():
             crociera.elenca_passeggeri()
 
         elif scelta == "6":
-            print("Uscita dal programma.")
+            print("\nUscita dal programma...")
             break
 
         else:
-            print("Scelta non valida.")
+            print("\nScelta non valida.")
 
 if __name__ == "__main__":
     main()
